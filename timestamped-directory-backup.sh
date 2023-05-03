@@ -1,7 +1,10 @@
 #!/bin/bash
 
-# Useage:
-# ./backup-directory.sh <directory-to-copy> <copy-into-directory>
+if [[ $# -ne 2 ]]; then
+    echo 'Usage: ./timestamped-directory-backup.sh' \
+        '<directory-to-copy> <copy-into-directory>' >&2
+    exit 1
+fi
 
 dir_to_copy=${1%/}
 sudo chown -R "$USER":"$USER" "$dir_to_copy"
